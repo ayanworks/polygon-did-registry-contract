@@ -22,31 +22,88 @@ Using ethers, the following illustrates how one can interact with PolygonRegistr
 
 ## Loading the Contract
 
+```
+const ethers = require('ethers');
+const url = https://rpc-mumbai.matic.today; // For matic testnet
+const DID_ADDRESS = `<Contract Address>`;
+const provider = new ethers.providers.JsonRpcProvider(url);
+
+let wallet = new ethers.Wallet(`<Signer Key/Private Key>`, provider);
+let registry = new ethers.Contract(DID_ADDRESS, <Contract ABI>, wallet);
+```
+
 ## Creating a DID
+
+```
+let returnHashValues = await registry.functions.createDID(<DID address>, DidDoc);
+```
 
 ## Updating a DID
 
+
+```
+let returnValues = await registry.functions.updateDID(<DID address>, DidDoc)
+```
+
 ## Delete a DID
+
+```
+let returnValues = await registry.functions.deleteDID(<DID address>)
+```
 
 ## Resolving a DID 
 
+```
+let returnDidDoc = await registry.functions.getDID(<DID address>);
+```
 
 # Deploying the Contract on Matic network
 
 Pre-requisites
 
 * NodeJS 
+
+```
+https://nodejs.org/en/download/
+```
+
 * Truffle
+
+```
+https://www.trufflesuite.com/docs/truffle/getting-started/truffle-with-metamask
+```
+
 * Ganache
+
+```
+https://www.trufflesuite.com/ganache
+```
+
 * A wallet connected to polygon network, with Matic token in it. One can receive the Matic Test Tokens from their faucet.
  
 ## Deployment
 
 Clone the above repository
 
-Run a ganache using 
+```
+git clone https://gitlab.com/polygon-did/polygon-did-smart-contract.git
+```
+
+Run a ganache instance 
+
+```
+ganache-cli
+```
 
 Update your mnemonic in truffle-config.js
 
+```
+const mnemonic = <Place your mnemonic here>;
+```
+
 On a new console window run
+
+```
+truffle migrate --network matic
+```
 
