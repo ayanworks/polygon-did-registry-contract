@@ -101,7 +101,7 @@ describe('Basic Contract Testing', () => {
     });
 
     // Describing the 5th Test case
-    describe('Checking the Update function in Contract', async () => {
+    describe('Checking the Delete function in Contract', async () => {
 
         // Initializing the 1st sub test 
         it('This should delete the DID doc on Contract and will read and check if the value is now null', async () => {
