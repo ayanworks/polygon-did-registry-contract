@@ -80,6 +80,7 @@ https://www.trufflesuite.com/ganache
 ```
 
 * A wallet connected to polygon network, with Matic token in it. One can receive the Matic Test Tokens from their faucet.
+
  
 ## Deployment
 
@@ -106,4 +107,19 @@ On a new console window run
 ```
 truffle migrate --network matic
 ```
+
+## Testing
+
+For Testing first run
+
+```
+npm install
+```
+
+Next, run
+
+```
+npm run test
+```
+
 
