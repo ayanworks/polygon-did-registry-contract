@@ -18,7 +18,7 @@
  *
  */
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-  const mnemonic = "flight shield copy plunge achieve exercise muscle toddler wall private jump aware";
+  const mnemonic = "Place Your Mnemonic here";
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //

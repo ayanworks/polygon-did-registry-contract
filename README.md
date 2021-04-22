@@ -42,13 +42,13 @@ let returnHashValues = await registry.functions.createDID(<DID address>, DidDoc)
 
 
 ```
-let returnValues = await registry.functions.updateDID(<DID address>, DidDoc)
+let returnHashValues = await registry.functions.updateDID(<DID address>, DidDoc)
 ```
 
 ## Delete a DID
 
 ```
-let returnValues = await registry.functions.deleteDID(<DID address>)
+let returnHashValues = await registry.functions.deleteDID(<DID address>)
 ```
 
 ## Resolving a DID 
