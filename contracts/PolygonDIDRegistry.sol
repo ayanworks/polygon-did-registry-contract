@@ -1,10 +1,10 @@
 pragma solidity ^0.5.1;
 
 /**
- *@title PolygonDIDRegistry
+ *@title PolygonDidRegistry
  *@dev Smart Contract for Polygon DID Method
  */
-contract PolygonDIDRegistry {
+contract PolygonDidRegistry {
     struct PolyDID {
         address controller;
         uint256 created;
@@ -13,7 +13,7 @@ contract PolygonDIDRegistry {
     }
     modifier onlyController(address _id) {
         require(
-            did[_id].controller == msg.sender
+            did[_id].controller == msg.sender, "message sender is not the controller"
         );
         _;
     }
@@ -27,7 +27,7 @@ contract PolygonDIDRegistry {
      *@dev Register a new DID
      *@param _id - Address that will refer the DID doc
      *@param _doc - A string object that holds the DID Doc
-     *returns controller, created, updated and did_doc
+     *@return returns the controller, created and updated time stamp and DID Document
      */
     function createDID(address _id, string memory _doc)
         public
@@ -53,7 +53,7 @@ contract PolygonDIDRegistry {
      *@dev To Update the DID doc
      *@param _id - Address that refers to the DID doc
      *@param _doc - A String that holds the DID doc
-     * returns controller, created, updated and did_doc
+     *@return returns the controller, created and updated time stamp and DID Document
      */
     function updateDID(address _id, string memory _doc)
         public
@@ -67,7 +67,7 @@ contract PolygonDIDRegistry {
 
     /**
      *@dev To delete a DID from chain
-     *@param _id - Address that refers to the DID doc that need to be deleted and returns error if not deleted
+     *@param _id - Address that refers to the DID doc that need to be deleted
      */
     function deleteDID(address _id) public onlyController(_id) {
         delete did[_id];

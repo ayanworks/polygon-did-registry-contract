@@ -1,5 +1,5 @@
-const PolygonDIDRegistry = artifacts.require("PolygonDIDRegistry");
+const PolygonDidRegistry = artifacts.require("PolygonDidRegistry");
 
 module.exports = function(deployer){
-    deployer.deploy(PolygonDIDRegistry);
+    deployer.deploy(PolygonDidRegistry);
 };
