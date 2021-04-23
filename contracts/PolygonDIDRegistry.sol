@@ -20,9 +20,9 @@ contract PolygonDIDRegistry {
     }
 
     mapping(address => PolyDID) did;
-    event CreateDID(address id, string doc);
-    event UpdateDID(address id, string doc);
-    event DeleteDID(address id);
+    event DidCreated(address id, string doc);
+    event DidUpdated(address id, string doc);
+    event DidDeleted(address id);
 
     /**
      *@dev Register a new DID
@@ -37,7 +37,7 @@ contract PolygonDIDRegistry {
         did[_id].created = now;
         did[_id].updated = now;
         did[_id].did_doc = _doc;
-        emit CreateDID(_id, _doc);
+        emit DidCreated(_id, _doc);
         return (did[_id].controller, did[_id].created, did[_id].updated, did[_id].did_doc);
     }
 
@@ -61,7 +61,7 @@ contract PolygonDIDRegistry {
     {
         did[_id].did_doc = _doc;
         did[_id].updated = now;
-        emit UpdateDID(_id, _doc);
+        emit DidUpdated(_id, _doc);
         return (did[_id].controller, did[_id].created, did[_id].updated, did[_id].did_doc);
     }
 
@@ -71,6 +71,6 @@ contract PolygonDIDRegistry {
      */
     function deleteDID(address _id) public onlyController(_id) {
         delete did[_id];
-        emit DeleteDID(_id);
+        emit DidDeleted(_id);
     }
 }
