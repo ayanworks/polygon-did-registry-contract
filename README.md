@@ -110,7 +110,7 @@ truffle migrate --network matic
 
 ## Testing
 
-For Testing first run
+For Testing use the command
 
 ```
 npm install
