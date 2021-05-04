@@ -18,7 +18,7 @@
  *
  */
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-  const mnemonic = "Place your mnemonic here";
+const mnemonic = "Place your mnemonic here";
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
@@ -35,7 +35,7 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
-  
+
 
   networks: {
 
@@ -49,6 +49,12 @@ module.exports = {
         return new HDWalletProvider(mnemonic, "https://rpc-mumbai.matic.today");
       },
       network_id: '80001',
+    },
+    matic_mainnet: {
+      provider: function () {
+        return new HDWalletProvider(mnemonic, "https://rpc-mainnet.maticvigil.com/");
+      },
+      network_id: '137',
     }
 
     // Useful for testing. The `development` name is special - truffle uses it by default
