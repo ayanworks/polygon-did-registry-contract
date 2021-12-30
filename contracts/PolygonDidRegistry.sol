@@ -38,7 +38,7 @@ contract PolygonDidRegistry {
         if(owner != newOwner){
             owner = newOwner;
             emit TransferOwnership(owner);
-            return ("Ownership transffered successfully");
+            return ("Ownership transferred successfully");
         }
         else {
             return ("New Owner address is equal to original owner address");
