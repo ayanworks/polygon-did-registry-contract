@@ -9,10 +9,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.0",
+    "ethers": "^4.0.41",
+    "fs-extra": "8.1.0",
     "ganache-cli": "6.8.1",
     "mocha": "^7.0.0",
-    "solc": "0.5.1",
-    "ethers": "^4.0.41",
-    "fs-extra": "8.1.0"
+    "solc": "0.5.1"
   }
 }
