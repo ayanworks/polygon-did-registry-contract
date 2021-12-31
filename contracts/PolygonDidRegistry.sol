@@ -1,3 +1,8 @@
+/**
+ *Submitted for verification at polygonscan.com on 2021-12-29
+*/
+
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 /**
@@ -38,7 +43,7 @@ contract PolygonDidRegistry {
         if(owner != newOwner){
             owner = newOwner;
             emit TransferOwnership(owner);
-            return ("Ownership transferred successfully");
+            return ("Ownership transffered successfully");
         }
         else {
             return ("New Owner address is equal to original owner address");
