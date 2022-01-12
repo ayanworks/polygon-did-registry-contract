@@ -27,7 +27,8 @@
   "keywords": [
     "did-method"
   ],
-  "author": "Anusha Garg <anusha.garg@ayanworks.com>",
+  "author": "AyanWorks <www.ayanworks.com",
+  "contributors": [ "Anusha Garg <anusha.garg@ayanworks.com>, Shashank Kulkarni <shashank.kulkarni@ayanworks.com>" ],
   "bugs": {
     "url": "https://github.com/ayanworks/polygon-did-registry-contract/issues"
   },
