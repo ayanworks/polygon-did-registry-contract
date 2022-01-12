@@ -1,7 +1,11 @@
 {
-  "name": "smart_contract_tester",
-  "version": "1.1.0",
-  "description": "Smart Contract Tester",
+  "name": "@ayanworks/polygon-did-registry-contract",
+  "version": "0.0.2",
+  "description": "Smart Contract to register DID on Polygon",
+  "main": "build/contracts/PolygonDidRegistry.json",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "compile": "node compile.js",
     "deploy": "node deploy.js",
@@ -9,11 +13,23 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.0.0",
-    "ethers": "^4.0.41",
-    "fs-extra": "8.1.0",
     "ganache-cli": "6.8.1",
     "mocha": "^7.0.0",
-    "solc": "0.5.1"
-  }
+    "solc": "0.8.0",
+    "ethers": "^4.0.41",
+    "fs-extra": "8.1.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayanworks/polygon-did-registry-contract"
+  },
+  "keywords": [
+    "did-method"
+  ],
+  "author": "Anusha Garg <anusha.garg@ayanworks.com>",
+  "bugs": {
+    "url": "https://github.com/ayanworks/polygon-did-registry-contract/issues"
+  },
+  "homepage": "https://github.com/ayanworks/polygon-did-registry-contract#readme"
 }
