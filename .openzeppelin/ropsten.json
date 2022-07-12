@@ -1,0 +1,144 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0xE6032F092C449eCADC468f55DcdD52f4D9e691B3",
+    "txHash": "0x7172736c49be3b2292b951fa285206d43e00043c3570b297b87a45a9a12c9fa3"
+  },
+  "proxies": [
+    {
+      "address": "0xADfADE52720258159D7b1210B4Cb1616BfEe8B45",
+      "txHash": "0x969bfa8534717c354fe07206ae17e443014eb31cc2d34ebe4fb9c87b99f8b227",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "8f9e461e2d9db6989da5ef93f3b82584936b8bb32b47508b4ece2e6f56b51b85": {
+      "address": "0x4C78bf69b63805f6933C7E8442382C174fC3d063",
+      "txHash": "0x131142e2f21ce2e55acd41311229d943bc6acdc4af15b62c1ff802e5839d28e1",
+      "layout": {
+        "storage": [
+          {
+            "contract": "PolygonDidRegistry",
+            "label": "owner",
+            "type": "t_address",
+            "src": "../project:/contracts/Migrations.sol:16"
+          },
+          {
+            "contract": "PolygonDidRegistry",
+            "label": "did",
+            "type": "t_mapping(t_address,t_struct(PolyDID)13_storage)",
+            "src": "../project:/contracts/Migrations.sol:20"
+          },
+          {
+            "contract": "PolygonDidRegistry",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "../project:/contracts/Migrations.sol:20"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_struct(PolyDID)13_storage)": {
+            "label": "mapping(address => struct PolygonDidRegistry.PolyDID)"
+          },
+          "t_struct(PolyDID)13_storage": {
+            "label": "struct PolygonDidRegistry.PolyDID",
+            "members": [
+              {
+                "label": "controller",
+                "type": "t_address"
+              },
+              {
+                "label": "created",
+                "type": "t_uint256"
+              },
+              {
+                "label": "updated",
+                "type": "t_uint256"
+              },
+              {
+                "label": "did_doc",
+                "type": "t_string_storage"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "53a1eb84c8c8c53c85ed94762555a785d24364bab0c4832a3b9fbce501d13c0c": {
+      "address": "0x08ddF368Caec3760D200343b02BA5BE69e54d347",
+      "txHash": "0x9821d800e8a48442b9573af5daeb9cea8838aeba04d4c86bca2c59c08430201a",
+      "layout": {
+        "storage": [
+          {
+            "contract": "PolygonDidRegistryUp",
+            "label": "owner",
+            "type": "t_address",
+            "src": "../project:/contracts/Migrations.sol:16"
+          },
+          {
+            "contract": "PolygonDidRegistryUp",
+            "label": "did",
+            "type": "t_mapping(t_address,t_struct(PolyDID)13_storage)",
+            "src": "../project:/contracts/Migrations.sol:20"
+          },
+          {
+            "contract": "PolygonDidRegistryUp",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "../project:/contracts/Migrations.sol:20"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_struct(PolyDID)13_storage)": {
+            "label": "mapping(address => struct PolygonDidRegistryUp.PolyDID)"
+          },
+          "t_struct(PolyDID)13_storage": {
+            "label": "struct PolygonDidRegistryUp.PolyDID",
+            "members": [
+              {
+                "label": "controller",
+                "type": "t_address"
+              },
+              {
+                "label": "created",
+                "type": "t_uint256"
+              },
+              {
+                "label": "updated",
+                "type": "t_uint256"
+              },
+              {
+                "label": "did_doc",
+                "type": "t_string_storage"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    }
+  }
+}

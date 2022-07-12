@@ -12,9 +12,13 @@ The Polygon registry contract acts as a public ledger, where the Polygon-Identit
 
 * updateDID(address, string) : The method updateDID is included in contract, which will facilitate the controller, and only the controller of the did, to update the document if need arises. Though the Polygon DID method, defines how the DID doc is defined as per standards, and that can be resolved.  
 
-* deleteDID(address) : The method deleteDID is included in the  contract, that only the controller of DID can access, to delete a particular DID from ledge.
+* deleteDID(address) : The method deleteDID is included in the  contract, that only the controller of DID can access, to delete a particular DID from ledger.
 
 * getDID(address) : The method getDID helps, the DID controller to resolve the DID document.
+
+* transferOwnership(address) : The method transferOwnership, helps in transferring the owwnership of contract to a new owner. Only the current owner can access this function.
+
+* getOwner() : the method getOwner helps one to fetch the current owner of the contract.
 
 ## Example ethers code
 
@@ -113,13 +117,7 @@ truffle migrate --network matic
 For Testing use the command
 
 ```
-npm install
-```
-
-Next, run
-
-```
-npm run test
+truffle test
 ```
 
 

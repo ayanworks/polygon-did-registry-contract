@@ -3,7 +3,8 @@
 */
 
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.15;
+// import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 /**
  *@title PolygonDidRegistry
@@ -17,9 +18,10 @@ contract PolygonDidRegistry {
         uint256 updated;
         string did_doc;
     }
+
     modifier onlyController(address _id) {
         require(
-            did[_id].controller == msg.sender, "message sender is not the controller"
+            did[_id].controller == msg.sender, "message sender is not the controller of the DID Doc"
         );
         _;
     }
@@ -29,8 +31,11 @@ contract PolygonDidRegistry {
     event DidUpdated(address id, string doc);
     event DidDeleted(address id);
     event TransferOwnership(address newOwner);
+        bool private initialized;
 
-    constructor (){
+    function initialize() public {
+        require(!initialized, "Contract instance has already been initialized");
+        initialized = true;
         owner = msg.sender;
     }
 
@@ -39,15 +44,26 @@ contract PolygonDidRegistry {
         _;
     }
 
-    function transferOwnership(address newOwner)public onlyOwner() returns (string memory){
-        if(owner != newOwner){
-            owner = newOwner;
+    /**
+    *@dev transfer the ownership of contract
+    *@param _newOwner - Address of the new owner to whom the ownership needs to be passed
+    **/
+    function transferOwnership(address _newOwner)public onlyOwner() returns (string memory){
+        if(owner != _newOwner){
+            owner = _newOwner;
             emit TransferOwnership(owner);
             return ("Ownership transffered successfully");
         }
         else {
             return ("New Owner address is equal to original owner address");
         }
+    }
+
+    /**
+     *@dev Reads contract owner from chain
+     */
+    function getOwner() public view returns (address _owner){
+        return owner;
     }
 
     /**

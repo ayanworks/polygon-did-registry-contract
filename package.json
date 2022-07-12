@@ -1,6 +1,6 @@
 {
   "name": "@ayanworks/polygon-did-registry-contract",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Smart Contract to register DID on Polygon",
   "main": "build/contracts/PolygonDidRegistry.json",
   "directories": {
@@ -13,13 +13,20 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ganache-cli": "6.8.1",
+    "@openzeppelin/contracts": "^4.7.0",
+    "@truffle/hdwallet-provider": "^2.0.10",
+    "fs-extra": "8.1.0",
+    "ganache-cli": "6.12.2",
     "mocha": "^7.0.0",
     "solc": "0.8.0",
-    "ethers": "^4.0.41",
-    "fs-extra": "8.1.0"
+    "truffle": "^5.5.20"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.15.0",
+    "chai": "^4.3.6",
+    "ethers": "^5.6.9",
+    "truffle": "^5.5.20"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ayanworks/polygon-did-registry-contract"
@@ -28,7 +35,9 @@
     "did-method"
   ],
   "author": "Ajay Jadhav <ajay@ayanworks.com>",
-  "contributors": ["Anusha Garg <anusha.garg@ayanworks.com>, Shashank Kulkarni <shashank.kulkarni@ayanworks.com>"],
+  "contributors": [
+    "Anusha Garg <anusha.garg@ayanworks.com>, Shashank Kulkarni <shashank.kulkarni@ayanworks.com>"
+  ],
   "bugs": {
     "url": "https://github.com/ayanworks/polygon-did-registry-contract/issues"
   },

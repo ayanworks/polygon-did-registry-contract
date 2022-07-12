@@ -44,18 +44,24 @@
        port: 8545, // Standard Ethereum port (default: none)
        network_id: "*", // Any network (default: none)
      },
-     matic: {
+     matic_testnet: {
        provider: function () {
-         return new HDWalletProvider(mnemonic, "https://rpc-mumbai.matic.today");
+         return new HDWalletProvider(mnemonic, "https://rpc-mumbai.maticvigil.com/");
        },
        network_id: '80001',
      },
      matic_mainnet: {
        provider: function () {
-         return new HDWalletProvider(mnemonic, "https://rpc-mainnet.maticvigil.com/");
+         return new HDWalletProvider(mnemonic, "https://polygon-rpc.com");
        },
        network_id: '137',
-     }
+     },
+     ropsten: {
+      provider: function () {
+        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161");
+      },
+      network_id: '3',
+     } 
  
      // Useful for testing. The `development` name is special - truffle uses it by default
      // if it's defined here and no other network is specified at the command line.
@@ -103,7 +109,7 @@
    // Configure your compilers
    compilers: {
      solc: {
-       version: "0.8.0",    // Fetch exact version from solc-bin (default: truffle's version)
+       version: "0.8.15",    // Fetch exact version from solc-bin (default: truffle's version)
        // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
        // settings: {          // See the solidity docs for advice about optimization and evmVersion
        //  optimizer: {
