@@ -16,7 +16,7 @@ The Polygon registry contract acts as a public ledger, where the Polygon-Identit
 
 * getDID(address) : The method getDID helps, the DID controller to resolve the DID document.
 
-* transferOwnership(address) : The method transferOwnership, helps in transferring the owwnership of contract to a new owner. Only the current owner can access this function.
+* transferOwnership(address) : The method transferOwnership, helps in transferring the ownership of contract to a new owner. Only the current owner can access this function.
 
 * getOwner() : the method getOwner helps one to fetch the current owner of the contract.
 
