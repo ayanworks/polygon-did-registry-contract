@@ -119,5 +119,5 @@ For Testing use the command
 ```
 truffle test
 ```
-
+The test cases run on a ganache setup.
 
