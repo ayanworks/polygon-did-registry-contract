@@ -1,4 +1,4 @@
-# Polygon- Identity
+# Polygon DID Registry Contract
 
 This library is an implementation of a registry contract that supports the Polygon DID Method.
 
