@@ -55,13 +55,7 @@
          return new HDWalletProvider(mnemonic, "https://polygon-rpc.com");
        },
        network_id: '137',
-     },
-     ropsten: {
-      provider: function () {
-        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161");
-      },
-      network_id: '3',
-     } 
+     }
  
      // Useful for testing. The `development` name is special - truffle uses it by default
      // if it's defined here and no other network is specified at the command line.
