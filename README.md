@@ -100,10 +100,11 @@ Run a ganache instance
 ganache-cli
 ```
 
-Update your mnemonic in truffle-config.js
+Update your and RPC URL in .env file.
 
 ```
-const mnemonic = <Place your mnemonic here>;
+RPC_URL="<Place your mnemonic here>"
+MNEMONIC="<Place your mnemonic here>"
 ```
 
 On a new console window run
