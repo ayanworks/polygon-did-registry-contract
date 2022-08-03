@@ -17,11 +17,9 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
- require("dotenv").config();
  const HDWalletProvider = require("@truffle/hdwallet-provider");
  const { rpcUrl, mnemonic } = process.env;
 
- 
  module.exports = {
    /**
     * Networks define how you connect to your ethereum client and let you set the
@@ -61,7 +59,7 @@
    // Configure your compilers
    compilers: {
      solc: {
-       version: "0.8.0",    // Fetch exact version from solc-bin (default: truffle's version)
+       version: "0.8.15",    // Fetch exact version from solc-bin (default: truffle's version)
      }
    },
  
