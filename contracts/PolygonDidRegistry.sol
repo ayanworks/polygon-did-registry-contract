@@ -11,7 +11,9 @@ pragma solidity ^0.8.15;
  *@dev Smart Contract for Polygon DID Method
  */
 contract PolygonDidRegistry {
+    uint256 totalDIDs;
     address owner;
+     uint256 deletedDID;
     struct PolyDID {
         address controller;
         uint256 created;
@@ -25,18 +27,26 @@ contract PolygonDidRegistry {
         );
         _;
     }
-
     mapping(address => PolyDID) did;
+    mapping(uint256 => address) allDIDs;
+    mapping(address => uint256) deleteDIDs;
     event DidCreated(address id, string doc);
     event DidUpdated(address id, string doc);
     event DidDeleted(address id);
     event TransferOwnership(address newOwner);
-        bool private initialized;
+    bool private initialized;
+   
+
+    /**
+    *@dev initializes the ownership of contract
+    **/
 
     function initialize() public {
         require(!initialized, "Contract instance has already been initialized");
         initialized = true;
         owner = msg.sender;
+        totalDIDs = 0;
+        deletedDID = 0;
     }
 
     modifier onlyOwner(){
@@ -48,6 +58,7 @@ contract PolygonDidRegistry {
     *@dev transfer the ownership of contract
     *@param _newOwner - Address of the new owner to whom the ownership needs to be passed
     **/
+
     function transferOwnership(address _newOwner)public onlyOwner() returns (string memory){
         if(owner != _newOwner){
             owner = _newOwner;
@@ -62,6 +73,7 @@ contract PolygonDidRegistry {
     /**
      *@dev Reads contract owner from chain
      */
+
     function getOwner() public view returns (address _owner){
         return owner;
     }
@@ -71,6 +83,7 @@ contract PolygonDidRegistry {
      *@param _id - Address that will refer the DID doc
      *@param _doc - A string object that holds the DID Doc
      */
+
     function createDID(address _id, string memory _doc)
         public
         returns (address controller, uint256 created, uint256 updated, string memory did_doc)
@@ -79,6 +92,9 @@ contract PolygonDidRegistry {
         did[_id].created = block.timestamp;
         did[_id].updated = block.timestamp;
         did[_id].did_doc = _doc;
+        allDIDs[totalDIDs] = msg.sender;
+        deleteDIDs[_id] = totalDIDs;
+        totalDIDs = totalDIDs+1;
         emit DidCreated(_id, _doc);
         return (did[_id].controller, did[_id].created, did[_id].updated, did[_id].did_doc);
     }
@@ -87,8 +103,34 @@ contract PolygonDidRegistry {
      *@dev Reads DID Doc from Chain
      *@param _id - Address that refers to the DID doc position
      */
+
     function getDID(address _id) public view returns (string memory) {
         return did[_id].did_doc;
+    }
+
+    /**
+     *@dev Reads total number of DIDs from Chain
+    */
+
+    function getTotalNumberOfDIDs()public onlyOwner() view returns (uint256 _totalDIDs){
+        return totalDIDs;
+    }
+
+        /**
+     *@dev Reads total number of DIDs deletd from Chain
+    */
+
+    function getTotalNumberOfDeletedDIDs()public onlyOwner() view returns (uint256 _deletedDID){
+        return deletedDID;
+    }
+
+    /**
+     *@dev Reads one DID at a time from Chain based on index
+     *@param _index - Uint256 type variable that refers to the DID position 
+    */
+
+    function getDIDByIndex(uint256 _index)public onlyOwner() view returns (address _did){
+        return allDIDs[_index];
     }
 
     /**
@@ -96,6 +138,7 @@ contract PolygonDidRegistry {
      *@param _id - Address that refers to the DID doc
      *@param _doc - A String that holds the DID doc
      */
+
     function updateDID(address _id, string memory _doc)
         public
         onlyController(_id) returns(address controller, uint256 created, uint256 updated, string memory did_doc)
@@ -110,8 +153,11 @@ contract PolygonDidRegistry {
      *@dev To delete a DID from chain
      *@param _id - Address that refers to the DID doc that need to be deleted
      */
+
     function deleteDID(address _id) public onlyController(_id) {
+        deletedDID = deletedDID +1;
         delete did[_id];
+        delete allDIDs[deleteDIDs[_id]];
         emit DidDeleted(_id);
     }
 }
