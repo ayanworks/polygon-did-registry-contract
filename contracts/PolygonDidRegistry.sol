@@ -3,7 +3,7 @@
 */
 
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.15;
+pragma solidity ^0.8.0;
 // import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 /**
@@ -13,7 +13,7 @@ pragma solidity ^0.8.15;
 contract PolygonDidRegistry {
     uint256 totalDIDs;
     address owner;
-     uint256 deletedDID;
+    uint256 deletedDIDs;
     struct PolyDID {
         address controller;
         uint256 created;
@@ -28,7 +28,7 @@ contract PolygonDidRegistry {
         _;
     }
     mapping(address => PolyDID) did;
-    mapping(uint256 => address) allDIDs;
+    mapping(uint256 => address) activeDIDs;
     mapping(address => uint256) deleteDIDs;
     event DidCreated(address id, string doc);
     event DidUpdated(address id, string doc);
@@ -46,7 +46,7 @@ contract PolygonDidRegistry {
         initialized = true;
         owner = msg.sender;
         totalDIDs = 0;
-        deletedDID = 0;
+        deletedDIDs = 0;
     }
 
     modifier onlyOwner(){
@@ -92,7 +92,7 @@ contract PolygonDidRegistry {
         did[_id].created = block.timestamp;
         did[_id].updated = block.timestamp;
         did[_id].did_doc = _doc;
-        allDIDs[totalDIDs] = msg.sender;
+        activeDIDs[totalDIDs] = msg.sender;
         deleteDIDs[_id] = totalDIDs;
         totalDIDs = totalDIDs+1;
         emit DidCreated(_id, _doc);
@@ -112,25 +112,26 @@ contract PolygonDidRegistry {
      *@dev Reads total number of DIDs from Chain
     */
 
-    function getTotalNumberOfDIDs()public onlyOwner() view returns (uint256 _totalDIDs){
-        return totalDIDs;
+    function getTotalNumberOfDIDs()public onlyOwner() view returns (uint256 _totalDIDs, uint256 _activeDIDs){
+        return (totalDIDs, (totalDIDs-deletedDIDs));
     }
 
-        /**
-     *@dev Reads total number of DIDs deletd from Chain
+    /**
+     *@dev Reads total number of DIDs deleted from Chain
     */
 
     function getTotalNumberOfDeletedDIDs()public onlyOwner() view returns (uint256 _deletedDID){
-        return deletedDID;
+        return deletedDIDs;
     }
 
     /**
      *@dev Reads one DID at a time from Chain based on index
      *@param _index - Uint256 type variable that refers to the DID position 
-    */
+     *@return _did - returns the address associated with DID URI, if the DID is not deleted, else returns empty string.
+     */
 
     function getDIDByIndex(uint256 _index)public onlyOwner() view returns (address _did){
-        return allDIDs[_index];
+        return activeDIDs[_index];
     }
 
     /**
@@ -155,9 +156,9 @@ contract PolygonDidRegistry {
      */
 
     function deleteDID(address _id) public onlyController(_id) {
-        deletedDID = deletedDID +1;
+        deletedDIDs = deletedDIDs +1;
         delete did[_id];
-        delete allDIDs[deleteDIDs[_id]];
+        delete activeDIDs[deleteDIDs[_id]];
         emit DidDeleted(_id);
     }
 }
