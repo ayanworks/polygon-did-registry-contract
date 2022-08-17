@@ -59,7 +59,7 @@ contract PolygonDidRegistry {
     *@param _newOwner - Address of the new owner to whom the ownership needs to be passed
     **/
 
-    function transferOwnership(address _newOwner)public onlyOwner() returns (string memory){
+    function transferOwnership(address _newOwner) public onlyOwner() returns (string memory){
         if(owner != _newOwner){
             owner = _newOwner;
             emit TransferOwnership(owner);
@@ -112,7 +112,7 @@ contract PolygonDidRegistry {
      *@dev Reads total number of DIDs from Chain
     */
 
-    function getTotalNumberOfDIDs()public onlyOwner() view returns (uint256 _totalDIDs, uint256 _activeDIDs){
+    function getTotalNumberOfDIDs() public onlyOwner() view returns (uint256 _totalDIDs, uint256 _activeDIDs){
         return (totalDIDs, (totalDIDs-deletedDIDs));
     }
 
@@ -120,8 +120,8 @@ contract PolygonDidRegistry {
      *@dev Reads total number of DIDs deleted from Chain
     */
 
-    function getTotalNumberOfDeletedDIDs()public onlyOwner() view returns (uint256 _deletedDID){
-        return deletedDIDs;
+    function getTotalNumberOfDeletedDIDs() public onlyOwner() view returns (uint256 _deletedDID){
+        return deletedDID;
     }
 
     /**
@@ -130,8 +130,8 @@ contract PolygonDidRegistry {
      *@return _did - returns the address associated with DID URI, if the DID is not deleted, else returns empty string.
      */
 
-    function getDIDByIndex(uint256 _index)public onlyOwner() view returns (address _did){
-        return activeDIDs[_index];
+    function getDIDByIndex(uint256 _index) public onlyOwner() view returns (address _did){
+        return allDIDs[_index];
     }
 
     /**
