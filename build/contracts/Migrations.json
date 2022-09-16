@@ -1928,10 +1928,16 @@
       "links": {},
       "address": "0x49FC08dA57DfEd01E2a05176F34B4E4E1b9cf3a8",
       "transactionHash": "0x4d7f993c8d131950ce3e821af0ae2ce4cbeb414b60faa28c3e33c04d56f92f0b"
+    },
+    "1661279893314": {
+      "events": {},
+      "links": {},
+      "address": "0xdd7d3180FA110ACa3116f22d94647D6C3dcF7167",
+      "transactionHash": "0xc2fd5dfdb5c45a9cb8001e825afd36c910a51f0c6ca73ad8992b484b9f5cbcc8"
     }
   },
   "schemaVersion": "3.4.8",
-  "updatedAt": "2022-08-17T15:48:55.392Z",
+  "updatedAt": "2022-08-24T05:05:38.524Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
