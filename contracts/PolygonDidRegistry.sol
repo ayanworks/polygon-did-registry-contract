@@ -1,8 +1,6 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.16;
 
-// import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-
 /**
  *@title PolygonDidRegistry
  *@dev Smart Contract for Polygon DID Method
@@ -15,7 +13,7 @@ contract PolygonDidRegistry {
         address controller;
         uint256 created;
         uint256 updated;
-        string did_doc;
+        string didDoc;
     }
 
     modifier onlyController(address _id) {
@@ -27,10 +25,10 @@ contract PolygonDidRegistry {
     }
     mapping(address => PolyDID) polyDIDs;
     mapping(uint256 => address) activeDIDs;
-    mapping(address => uint256) deleteDIDs;
-    event DidCreated(address id, string doc);
-    event DidUpdated(address id, string doc);
-    event DidDeleted(address id);
+    mapping(address => uint256) activeAddress;
+    event DIDCreated(address id, string doc);
+    event DIDUpdated(address id, string doc);
+    event DIDDeleted(address id);
     event TransferOwnership(address newOwner);
     bool private initialized;
 
@@ -90,22 +88,22 @@ contract PolygonDidRegistry {
             address controller,
             uint256 created,
             uint256 updated,
-            string memory did_doc
+            string memory didDoc
         )
     {
         polyDIDs[_id].controller = msg.sender;
         polyDIDs[_id].created = block.timestamp;
         polyDIDs[_id].updated = block.timestamp;
-        polyDIDs[_id].did_doc = _doc;
+        polyDIDs[_id].didDoc = _doc;
         activeDIDs[totalDIDs] = msg.sender;
-        deleteDIDs[_id] = totalDIDs;
+        activeAddress[_id] = totalDIDs;
         ++totalDIDs;
-        emit DidCreated(_id, _doc);
+        emit DIDCreated(_id, _doc);
         return (
             polyDIDs[_id].controller,
             polyDIDs[_id].created,
             polyDIDs[_id].updated,
-            polyDIDs[_id].did_doc
+            polyDIDs[_id].didDoc
         );
     }
 
@@ -115,11 +113,11 @@ contract PolygonDidRegistry {
      */
 
     function getDIDDoc(address _id) public view returns (string memory) {
-        return polyDIDs[_id].did_doc;
+        return polyDIDs[_id].didDoc;
     }
 
     /**
-     *@dev Reads total number of DIDs from Chain
+     *@dev Reads total number of DIDs and total number of active DIDs from Chain
      */
 
     function getTotalNumberOfDIDs()
@@ -153,7 +151,7 @@ contract PolygonDidRegistry {
         view
         returns (string memory)
     {
-        return polyDIDs[activeDIDs[_index]].did_doc;
+        return polyDIDs[activeDIDs[_index]].didDoc;
     }
 
     /**
@@ -162,24 +160,24 @@ contract PolygonDidRegistry {
      *@param _doc - A String that holds the DID doc
      */
 
-    function updateDID(address _id, string memory _doc)
+    function updateDIDDoc(address _id, string memory _doc)
         public
         onlyController(_id)
         returns (
             address controller,
             uint256 created,
             uint256 updated,
-            string memory did_doc
+            string memory didDoc
         )
     {
-        polyDIDs[_id].did_doc = _doc;
+        polyDIDs[_id].didDoc = _doc;
         polyDIDs[_id].updated = block.timestamp;
-        emit DidUpdated(_id, _doc);
+        emit DIDUpdated(_id, _doc);
         return (
             polyDIDs[_id].controller,
             polyDIDs[_id].created,
             polyDIDs[_id].updated,
-            polyDIDs[_id].did_doc
+            polyDIDs[_id].didDoc
         );
     }
 
@@ -188,10 +186,10 @@ contract PolygonDidRegistry {
      *@param _id - Address that refers to the DID doc that need to be deleted
      */
 
-    function deleteDID(address _id) public onlyController(_id) {
-        ++deletedDID;
+    function deleteDIDDoc(address _id) public onlyController(_id) {
         delete polyDIDs[_id];
-        delete activeDIDs[deleteDIDs[_id]];
-        emit DidDeleted(_id);
+        delete activeDIDs[activeAddress[_id]];
+        ++deletedDID;
+        emit DIDDeleted(_id);
     }
 }
