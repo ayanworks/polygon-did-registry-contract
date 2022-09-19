@@ -103,14 +103,14 @@ ganache-cli
 Update your and RPC URL in .env file.
 
 ```
-RPC_URL="<Place your mnemonic here>"
-MNEMONIC="<Place your mnemonic here>"
+RPCURL="<Place your RPC URL here>"
+SIGNER="<Place your mnemonic/Private Key here>"
 ```
 
 On a new console window run
 
 ```
-truffle migrate --network matic
+truffle migrate --network <network name>
 ```
 
 ## Testing

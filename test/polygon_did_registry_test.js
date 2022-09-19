@@ -66,7 +66,21 @@ describe('Setting up the Upgradable Smart Contract', async () => {
         });
     });
 
-    // Describing the 1.2 Test case
+    //Describing the 1.2 Test Case
+            describe('Checking the getTotalNumberOfDIDs Function', async () => {
+                it('This should get correct number of DIDs registered', async () => {
+        
+                    const currentValue = await PolygonUpgradableInstance.getTotalNumberOfDIDs();
+                    assert.equal(
+                        currentValue,
+                        1,
+                        'value should be matching'
+                    );
+                });
+            });
+    
+
+    // Describing the 1.3 Test case
     describe('Checking the Update function in Upgradable Contract', async () => {
 
         it('This should update the DID doc on Upgradable Contract and will read and check if the value stored is correct', async () => {
@@ -89,7 +103,7 @@ describe('Setting up the Upgradable Smart Contract', async () => {
         });
     });
 
-    //Describing test 1.3 to check if test fails if we update with different controller
+    //Describing test 1.4 to check if test fails if we update with different controller
     describe('Checking update with wrong controller', async () => {
 
         it('This should not update DID doc ', async () => {
@@ -106,7 +120,7 @@ describe('Setting up the Upgradable Smart Contract', async () => {
         });
     });
 
-    // Describing the 1.4 Test case
+    // Describing the 1.5 Test case
     describe('Checking the Delete function in Upgradable Contract', async () => {
 
         it('This should delete the DID doc on Upgradable Contract and will read and check if the value is now an empty string', async () => {
@@ -127,7 +141,7 @@ describe('Setting up the Upgradable Smart Contract', async () => {
         });
     });
 
-    // Describing the 1.5 Test case
+    // Describing the 1.6 Test case
     describe('Checking the Create function in Upgradable Contract', async () => {
 
         it('This should store the DID doc on Upgradable Contract and will read and check if the value stored is not null', async () => {
@@ -151,7 +165,7 @@ describe('Setting up the Upgradable Smart Contract', async () => {
         });
     });
 
-    // Describing the 1.6 Test case
+    // Describing the 1.7 Test case
     describe('Checking the Update function in Upgradable Contract', async () => {
 
         it('This should update the DID doc on Upgradable Contract and will read and check if the value stored has changed', async () => {
@@ -176,7 +190,7 @@ describe('Setting up the Upgradable Smart Contract', async () => {
     });
 
 
-    // Describing the 1.7 Test Case
+    // Describing the 1.8 Test Case
     describe('Checking the Delete function in Upgradable Contract', async () => {
 
         it('This should delete the DID doc on Upgradable Contract and will read and check if the value is now not equal to the updated doc', async () => {
@@ -198,8 +212,22 @@ describe('Setting up the Upgradable Smart Contract', async () => {
         });
     });
 
+      //Describing the 1.9 Test Case
+      describe('Checking the getTotalNumberOfDIDs Function', async () => {
+        it('This should get correct number of DIDs registered', async () => {
 
-    //Describing the 1.8 Test Case
+            const totalValue = await PolygonUpgradableInstance.getTotalNumberOfDIDs();
+            const deltedValue = await PolygonUpgradableInstance.getTotalNumberOfDeletedDIDs();
+            const currentValue = totalValue - deltedValue;
+            assert.equal(
+                currentValue,
+                0,
+                'value should be matching'
+            );
+        });
+    });
+
+    //Describing the 1.10 Test Case
     describe('Checking the Transafer Ownership Function', async () => {
         it('This should transfer ownership of contract to another user', async () => {
 
@@ -216,7 +244,7 @@ describe('Setting up the Upgradable Smart Contract', async () => {
         });
     });
    
-        //Describing the 1.9 Test Case
+        //Describing the 1.11 Test Case
         describe('Checking the Transafer Ownership Function', async () => {
             it('This should not transfer ownership of contract to another user since the transaction is being initiated by different owner', async () => {
     
@@ -229,9 +257,7 @@ describe('Setting up the Upgradable Smart Contract', async () => {
                 }
             });
         });
-
-})
-
+    })
 
 
 // basic Contract Testing

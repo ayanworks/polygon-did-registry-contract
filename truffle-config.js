@@ -18,7 +18,7 @@
  *
  */
  const HDWalletProvider = require("@truffle/hdwallet-provider");
- const { rpcUrl, mnemonic } = process.env;
+ require('dotenv').config()
 
  module.exports = {
    /**
@@ -39,13 +39,13 @@
      },
      matic: {
        provider: function () {
-         return new HDWalletProvider(mnemonic, rpcUrl);
+         return new HDWalletProvider(process.env.SIGNER, process.env.RPCURL);
        },
        network_id: '80001',
      },
      matic_mainnet: {
        provider: function () {
-         return new HDWalletProvider(mnemonic, rpcUrl);
+         return new HDWalletProvider(process.env.SIGNER, process.env.RPCURL);
        },
        network_id: '137',
      }
@@ -59,7 +59,7 @@
    // Configure your compilers
    compilers: {
      solc: {
-       version: "0.8.15",    // Fetch exact version from solc-bin (default: truffle's version)
+       version: "0.8.16",    // Fetch exact version from solc-bin (default: truffle's version)
      }
    },
  
