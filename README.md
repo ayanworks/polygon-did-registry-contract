@@ -8,23 +8,23 @@ The Polygon registry contract acts as a public ledger, where the Polygon-Identit
 
 ## Methods
 
-* createDID(address, string) : The method createDID is used to create and log a new DID on the polygon chain. The parameter of address type, will act as the reference key, to refer  the did document stored on the chain. The string type variable will contain the did document, that will be stored on the matic chain.
+* ```createDID(address, string)``` : The method createDID is used to create and log a new DID on the polygon chain. The parameter of address type, will act as the reference key, to refer  the did document stored on the chain. The string type variable will contain the did document, that will be stored on the matic chain.
 
-* updateDIDDoc(address, string) : The method updateDID is included in contract, which will facilitate the controller, and only the controller of the did, to update the document if need arises. Though the Polygon DID method, defines how the DID doc is defined as per standards, and that can be resolved.  
+* ```updateDIDDoc(address, string)``` : The method updateDID is included in contract, which will facilitate the controller, and only the controller of the did, to update the document if need arises. Though the Polygon DID method, defines how the DID doc is defined as per standards, and that can be resolved.  
 
-* deleteDIDDoc(address) : The method deleteDID is included in the  contract, that only the controller of DID can access, to delete a particular DID from ledger.
+* ```deleteDIDDoc(address)``` : The method deleteDID is included in the  contract, that only the controller of DID can access, to delete a particular DID from ledger.
 
-* getDIDDoc(address) : The method getDID helps to resolve the DID document.
+* ```getDIDDoc(address)``` : The method getDID helps to resolve the DID document.
 
-* transferOwnership(address) : The method transferOwnership, helps in transferring the ownership of contract to a new owner. Only the current owner can access this function.
+* ```transferOwnership(address)``` : The method transferOwnership, helps in transferring the ownership of contract to a new owner. Only the current owner can access this function.
 
-* getOwner() : the method getOwner helps one to fetch the current owner of the contract.
+* ```getOwner()``` : the method getOwner helps one to fetch the current owner of the contract.
 
-* getTotalNumberOfDIDs() : the method getTotalNumberOfDIDs helps one to fetch the total number of DIDs ever written on Polygon Ledger, with the number of currently active DIDs.
+* ```getTotalNumberOfDIDs()``` : the method getTotalNumberOfDIDs helps one to fetch the total number of DIDs ever written on Polygon Ledger, with the number of currently active DIDs.
 
-* getTotalNumberOfDeletedDIDs(): the method getTotalNumberOfDeletedDIDs helps one fetch the total number of DIDs deleted from Polygon Ledger.
+* ```getTotalNumberOfDeletedDIDs()```: the method getTotalNumberOfDeletedDIDs helps one fetch the total number of DIDs deleted from Polygon Ledger.
 
-* getDIDDOcByIndex(uint256) : The method getDIDDOcByIndex helps,to resolve DID document by index.
+* ```getDIDDOcByIndex(uint256)``` : The method getDIDDOcByIndex helps,to resolve DID document by index.
 
 ## Example ethers code
 
