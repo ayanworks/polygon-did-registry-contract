@@ -100,7 +100,13 @@ Clone the above repository
 git clone https://gitlab.com/polygon-did/polygon-did-smart-contract.git
 ```
 
-Run a ganache instance 
+Install Dependencies
+
+```
+npm i
+```
+
+Run a ganache instance (only required for Local Deployment) 
 
 ```
 ganache-cli
