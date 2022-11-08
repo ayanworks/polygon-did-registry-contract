@@ -134,3 +134,9 @@ truffle test
 ```
 The test cases run on a ganache setup.
 
+## Contract Deployment
+
+| Network | ChainId | Registry Address |
+| :---: | :---: | :---: | 
+| Polygon Mainnet | 137 | 0x98bF771e1E93Db917A89986bcdaBa3b43643F367 |
+| Polygon Testnet | 80001 | 0x8B335A167DA81CCef19C53eE629cf2F6291F2255 |
