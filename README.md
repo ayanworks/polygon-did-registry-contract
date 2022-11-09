@@ -6,6 +6,13 @@ This library is an implementation of a registry contract that supports the Polyg
 
 The Polygon registry contract acts as a public ledger, where the Polygon-Identity specified Decentralised Identifiers will be logged. The specifications related to polygon DID method are mentioned in the      document. A DID generated using the Polygon DID generator, can be stored and managed on the ledger using this contract library.
 
+## Contract Deployment
+
+| Network | ChainId | Registry Address |
+| :---: | :---: | :---: | 
+| Polygon Mainnet | 137 | 0x98bF771e1E93Db917A89986bcdaBa3b43643F367 |
+| Polygon Testnet | 80001 | 0x8B335A167DA81CCef19C53eE629cf2F6291F2255 |
+
 ## Methods
 
 * ```createDID(address, string)``` : The method createDID is used to create and log a new DID on the polygon chain. The parameter of address type, will act as the reference key, to refer  the did document stored on the chain. The string type variable will contain the did document, that will be stored on the matic chain.
@@ -133,10 +140,3 @@ For Testing use the command
 truffle test
 ```
 The test cases run on a ganache setup.
-
-## Contract Deployment
-
-| Network | ChainId | Registry Address |
-| :---: | :---: | :---: | 
-| Polygon Mainnet | 137 | 0x98bF771e1E93Db917A89986bcdaBa3b43643F367 |
-| Polygon Testnet | 80001 | 0x8B335A167DA81CCef19C53eE629cf2F6291F2255 |
