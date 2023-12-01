@@ -1,6 +1,6 @@
 {
   "name": "@ayanworks/polygon-did-registry-contract",
-  "version": "2.0.1-alpha.1",
+  "version": "2.0.1-alpha.2",
   "description": "Smart Contract to register DID on Polygon",
   "main": "build/index.js",
   "directories": {
@@ -17,7 +17,7 @@
     "check-format": "pnpm prettier --list-different",
     "check-types": "pnpm build --noEmit",
     "format": "pnpm prettier --write",
-    "release": "git status && release-it"
+    "release": "release-it"
   },
   "license": "MIT",
   "devDependencies": {
