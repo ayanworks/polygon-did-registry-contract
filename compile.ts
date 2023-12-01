@@ -34,9 +34,7 @@ function convertToHex(inputString: string) {
   return hex
 }
 
-const sourceHash = ethers.utils.sha256(
-  '0x' + convertToHex(JSON.stringify(sources)),
-)
+const sourceHash = ethers.sha256('0x' + convertToHex(JSON.stringify(sources)))
 
 console.log('\n'.repeat(process.stdout.rows))
 
