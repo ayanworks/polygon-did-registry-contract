@@ -1,33 +1,42 @@
 {
   "name": "@ayanworks/polygon-did-registry-contract",
-  "version": "2.0.0",
+  "version": "2.0.1-alpha.1",
   "description": "Smart Contract to register DID on Polygon",
-  "main": "build/contracts/PolygonDidRegistry.json",
+  "main": "build/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "compile": "node compile.js",
     "deploy": "node deploy.js",
-    "test": "node compile.js && mocha --timeout 30000"
+    "test": "node compile.js && mocha --timeout 30000",
+    "clean": "rm -rf build",
+    "clean:deps": "pnpm clean && rm -rf node_modules",
+    "build": "pnpm clean && pnpm build:sol && tsc",
+    "build:sol": "node --require ts-node/register ./compile.ts",
+    "prettier": "prettier --ignore-path .prettierignore .",
+    "check-format": "pnpm prettier --list-different",
+    "check-types": "pnpm build --noEmit",
+    "format": "pnpm prettier --write",
+    "release": "release-it"
   },
   "license": "MIT",
-  "dependencies": {
-    "@openzeppelin/contracts": "^4.7.0",
-    "@truffle/hdwallet-provider": "^2.0.10",
-    "dotenv": "^16.0.2",
-    "eslint": "^8.23.1",
-    "fs-extra": "8.1.0",
-    "ganache-cli": "6.12.2",
-    "mocha": "^7.0.0",
-    "solc": "0.8.0",
-    "truffle": "^5.5.20"
-  },
   "devDependencies": {
     "@openzeppelin/truffle-upgrades": "^1.15.0",
-    "chai": "^4.3.6",
-    "ethers": "^5.6.9",
-    "truffle": "^5.5.20"
+    "@truffle/hdwallet-provider": "^2.0.10",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.17.0",
+    "dotenv": "^16.0.2",
+    "eslint": "^8.23.1",
+    "ethers": "^6.9.0",
+    "fs-extra": "^11.1.1",
+    "ganache-cli": "6.12.2",
+    "mocha": "^7.0.0",
+    "prettier": "^3.0.2",
+    "release-it": "^16.3.0",
+    "solc": "^0.8.21",
+    "truffle": "^5.5.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   },
   "repository": {
     "type": "git",
