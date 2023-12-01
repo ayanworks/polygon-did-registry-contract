@@ -6,5 +6,6 @@
   "github": {
     "release": true,
     "autoGenerate": true
-  }
+  },
+  "requireCleanWorkingDir": false
 }
