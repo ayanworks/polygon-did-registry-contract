@@ -17,7 +17,7 @@
     "check-format": "pnpm prettier --list-different",
     "check-types": "pnpm build --noEmit",
     "format": "pnpm prettier --write",
-    "release": "release-it"
+    "release": "git status && release-it"
   },
   "license": "MIT",
   "devDependencies": {
