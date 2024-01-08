@@ -8,7 +8,6 @@ pragma solidity ^0.8.16;
 contract PolygonDidRegistry {
     uint256 totalDIDs;
     address owner;
-    uint256 deletedDID;
     struct PolyDID {
         address controller;
         uint256 created;
@@ -26,10 +25,13 @@ contract PolygonDidRegistry {
     mapping(address => PolyDID) polyDIDs;
     mapping(uint256 => address) activeDIDs;
     mapping(address => uint256) activeAddress;
+    mapping(address => mapping(string => string)) resourceData;
+    mapping(address => string[]) private keysById;
     event DIDCreated(address id, string doc);
     event DIDUpdated(address id, string doc);
-    event DIDDeleted(address id);
     event TransferOwnership(address newOwner);
+    event ResourceAdded(address _id, string _resourceId, string _resourcePayload);
+
     bool private initialized;
 
     /**
@@ -41,7 +43,6 @@ contract PolygonDidRegistry {
         initialized = true;
         owner = msg.sender;
         totalDIDs = 0;
-        deletedDID = 0;
     }
 
     modifier onlyOwner() {
@@ -112,8 +113,13 @@ contract PolygonDidRegistry {
      *@param _id - Address that refers to the DID doc position
      */
 
-    function getDIDDoc(address _id) public view returns (string memory) {
-        return polyDIDs[_id].didDoc;
+    function getDIDDoc(address _id) public view returns (string memory, string[] memory) {
+        string[] memory result = new string[](keysById[_id].length);
+
+        for (uint256 i = 0; i < keysById[_id].length; i++) {
+            result[i] = resourceData[_id][keysById[_id][i]];
+        }
+        return (polyDIDs[_id].didDoc, result);
     }
 
     /**
@@ -123,22 +129,11 @@ contract PolygonDidRegistry {
     function getTotalNumberOfDIDs()
         public
         view
-        returns (uint256 _totalDIDs, uint256 _activeDIDs)
+        returns (uint256 _totalDIDs)
     {
-        return (totalDIDs, (totalDIDs - deletedDID));
+        return (totalDIDs);
     }
 
-    /**
-     *@dev Reads total number of DIDs deleted from Chain
-     */
-
-    function getTotalNumberOfDeletedDIDs()
-        public
-        view
-        returns (uint256 _deletedDID)
-    {
-        return deletedDID;
-    }
 
     /**
      *@dev Reads one DID at a time from Chain based on index
@@ -146,7 +141,7 @@ contract PolygonDidRegistry {
      *@return _did - returns the DID Doc assciated with the index. Returns null if the DID Doc is deleted.
      */
 
-    function getDIDDOcByIndex(uint256 _index)
+    function getDIDDocByIndex(uint256 _index)
         public
         view
         returns (string memory)
@@ -182,14 +177,39 @@ contract PolygonDidRegistry {
     }
 
     /**
-     *@dev To delete a DID from chain
-     *@param _id - Address that refers to the DID doc that need to be deleted
+     *@dev To add linked resource in the DID doc
+     *@param _id - Address that refers to the DID doc
+     *@param _resourceId - Id that refers to the resource
+     */
+    function addResource(address _id, string memory _resourceId, string memory _resourcePayload) public onlyController(_id) returns (address, string memory, string memory) {
+    resourceData[_id][_resourceId] = _resourcePayload;
+    keysById[_id].push(_resourceId);
+    emit ResourceAdded(_id, _resourceId, _resourcePayload);
+    return (_id, _resourceId, _resourcePayload);
+}
+    
+     /**
+     *@dev Reads DID linked resource from Chain
+     *@param _id - Address that refers to the DID doc
+     *@param _resourceId - Id that refers to a specific resource
      */
 
-    function deleteDIDDoc(address _id) public onlyController(_id) {
-        delete polyDIDs[_id];
-        delete activeDIDs[activeAddress[_id]];
-        ++deletedDID;
-        emit DIDDeleted(_id);
+    function getResource(address _id, string memory _resourceId) public view returns (string memory) {
+        return resourceData[_id][_resourceId];
+    }
+
+    /**
+     *@dev Reads all DID linked resource for a specific DID from Chain
+     *@param _id - Address that refers to the DID doc
+     */
+
+    function getAllResources(address _id) public view returns (string[] memory) {
+        string[] memory result = new string[](keysById[_id].length);
+
+        for (uint256 i = 0; i < keysById[_id].length; i++) {
+            result[i] = resourceData[_id][keysById[_id][i]];
+        }
+
+        return result;
     }
 }
