@@ -3,10 +3,10 @@
  */
 
 // import 'hardhat';
-require("@nomicfoundation/hardhat-ethers");
-require('@openzeppelin/hardhat-upgrades');
+require('@nomicfoundation/hardhat-ethers')
+require('@openzeppelin/hardhat-upgrades')
 
-require('dotenv/config');
+require('dotenv/config')
 
 module.exports = {
   solidity: {
@@ -25,4 +25,4 @@ module.exports = {
       accounts: [`0x${process.env.SIGNER}`],
     },
   },
-};
+}

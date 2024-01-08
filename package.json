@@ -52,7 +52,5 @@
     "url": "https://github.com/ayanworks/polygon-did-registry-contract/issues"
   },
   "homepage": "https://github.com/ayanworks/polygon-did-registry-contract#readme",
-  "dependencies": {
-    
-  }
+  "dependencies": {}
 }

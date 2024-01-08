@@ -11,12 +11,16 @@ async function main() {
     //   initializer: 'initialize',
     // })
 
-    const existingContractAddress = '0xF7dc016E5752e413f6C6188BaCAa8B5c30A4DFF2';
+    const existingContractAddress = '0xF7dc016E5752e413f6C6188BaCAa8B5c30A4DFF2'
 
-    const contract = await upgrades.upgradeProxy(existingContractAddress, PolygonDidRegistry, {
-      unsafeAllowCustomTypes: true,
-      initializer: 'initialize',
-    });
+    const contract = await upgrades.upgradeProxy(
+      existingContractAddress,
+      PolygonDidRegistry,
+      {
+        unsafeAllowCustomTypes: true,
+        initializer: 'initialize',
+      },
+    )
 
     await contract.waitForDeployment()
 
