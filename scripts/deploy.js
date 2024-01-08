@@ -11,7 +11,7 @@ async function main() {
     //   initializer: 'initialize',
     // })
 
-    const existingContractAddress = '0x5edaC3E213F724224d68C943318AcF7b095c2B76';
+    const existingContractAddress = '0xF7dc016E5752e413f6C6188BaCAa8B5c30A4DFF2';
 
     const contract = await upgrades.upgradeProxy(existingContractAddress, PolygonDidRegistry, {
       unsafeAllowCustomTypes: true,

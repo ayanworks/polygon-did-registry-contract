@@ -21,8 +21,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.2.3",
-    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
     "@openzeppelin/hardhat-upgrades": "^3.0.1",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.17.0",
@@ -30,6 +29,7 @@
     "eslint": "^8.23.1",
     "ethers": "^6.9.0",
     "fs-extra": "^11.1.1",
+    "hardhat": "^2.19.4",
     "mocha": "^7.0.0",
     "prettier": "^3.0.2",
     "release-it": "^16.3.0",
@@ -53,6 +53,6 @@
   },
   "homepage": "https://github.com/ayanworks/polygon-did-registry-contract#readme",
   "dependencies": {
-    "hardhat": "^2.19.4"
+    
   }
 }

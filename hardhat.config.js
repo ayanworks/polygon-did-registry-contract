@@ -3,8 +3,7 @@
  */
 
 // import 'hardhat';
-require('@nomiclabs/hardhat-ethers');
-require('@nomiclabs/hardhat-waffle');
+require("@nomicfoundation/hardhat-ethers");
 require('@openzeppelin/hardhat-upgrades');
 
 require('dotenv/config');
