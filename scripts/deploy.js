@@ -1,25 +1,29 @@
-const { ethers, upgrades } = require('hardhat');
+const { ethers, upgrades } = require('hardhat')
 
 async function main() {
   try {
-    const PolygonDidRegistry = await ethers.getContractFactory('PolygonDidRegistry');
+    const PolygonDidRegistry =
+      await ethers.getContractFactory('PolygonDidRegistry')
 
     // To deploy the initial upgradable smart contract
+
     // const contract = await upgrades.deployProxy(PolygonDidRegistry, {
     //   initializer: 'initialize',
-    // });
+    // })
 
-    const existingContractAddress = '0xe5dbCDDe6933201eF735ae0Ca627C27c83F578AE';
+    const existingContractAddress = '0x5edaC3E213F724224d68C943318AcF7b095c2B76';
 
     const contract = await upgrades.upgradeProxy(existingContractAddress, PolygonDidRegistry, {
       unsafeAllowCustomTypes: true,
       initializer: 'initialize',
     });
 
-    await contract.waitForDeployment();
+    await contract.waitForDeployment()
+
+    console.log('Contract address::', contract.target)
   } catch (error) {
-    console.error('Error deploying contract:', error.message);
+    console.error('Error deploying contract:', error.message)
   }
 }
 
-main();
+main()

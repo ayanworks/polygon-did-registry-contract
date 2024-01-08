@@ -3,13 +3,13 @@
  */
 
 // import 'hardhat';
-import '@nomiclabs/hardhat-ethers';
-import '@nomiclabs/hardhat-waffle';
-import '@openzeppelin/hardhat-upgrades';
+require('@nomiclabs/hardhat-ethers');
+require('@nomiclabs/hardhat-waffle');
+require('@openzeppelin/hardhat-upgrades');
 
-import 'dotenv/config';
+require('dotenv/config');
 
-export default {
+module.exports = {
   solidity: {
     version: '0.8.16',
     settings: {
