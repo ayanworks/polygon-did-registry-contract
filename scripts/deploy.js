@@ -2,6 +2,7 @@ const { ethers, upgrades } = require('hardhat')
 
 async function main() {
   try {
+    console.log ("Deploying the smart contract...")
     const PolygonDidRegistry =
       await ethers.getContractFactory('PolygonDidRegistry')
 
@@ -11,13 +12,10 @@ async function main() {
     //   initializer: 'initialize',
     // })
 
-    const existingContractAddress = '0xF7dc016E5752e413f6C6188BaCAa8B5c30A4DFF2'
-
     const contract = await upgrades.upgradeProxy(
-      existingContractAddress,
+      process.env.CONTRACT_ADDRESS,
       PolygonDidRegistry,
       {
-        unsafeAllowCustomTypes: true,
         initializer: 'initialize',
       },
     )
