@@ -2,7 +2,7 @@ const { ethers, upgrades } = require('hardhat')
 
 async function main() {
   try {
-    console.log ("Deploying the smart contract...")
+    console.log('Deploying the smart contract...')
     const PolygonDidRegistry =
       await ethers.getContractFactory('PolygonDidRegistry')
 
