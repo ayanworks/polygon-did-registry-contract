@@ -5,3 +5,4 @@ artifacts
 cache
 .env
 .openzeppelin
+sst-config.json
