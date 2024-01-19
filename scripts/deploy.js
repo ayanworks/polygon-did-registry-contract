@@ -8,17 +8,17 @@ async function main() {
 
     // To deploy the initial upgradable smart contract
 
-    // const contract = await upgrades.deployProxy(PolygonDidRegistry, {
-    //   initializer: 'initialize',
-    // })
+    const contract = await upgrades.deployProxy(PolygonDidRegistry, {
+      initializer: 'initialize',
+    })
 
-    const contract = await upgrades.upgradeProxy(
-      process.env.CONTRACT_ADDRESS,
-      PolygonDidRegistry,
-      {
-        initializer: 'initialize',
-      },
-    )
+    // const contract = await upgrades.upgradeProxy(
+    //   process.env.CONTRACT_ADDRESS,
+    //   PolygonDidRegistry,
+    //   {
+    //     initializer: 'initialize',
+    //   },
+    // )
 
     await contract.waitForDeployment()
 

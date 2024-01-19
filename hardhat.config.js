@@ -5,6 +5,7 @@
 // import 'hardhat';
 require('@nomicfoundation/hardhat-ethers')
 require('@openzeppelin/hardhat-upgrades')
+require("@nomicfoundation/hardhat-verify");
 
 require('dotenv/config')
 
@@ -25,4 +26,9 @@ module.exports = {
       accounts: [`0x${process.env.SIGNER}`],
     },
   },
+  etherscan: {
+    apiKey: {
+      polygonMumbai:process.env.VERIFICATION_KEY
+    }
+  }
 }

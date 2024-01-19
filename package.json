@@ -8,7 +8,7 @@
   },
   "scripts": {
     "deploy": "node deploy.js",
-    "test": "node compile.js && mocha --timeout 30000",
+    "test": "node --require ts-node/register --test ./tests/polygon_did_registry_test.test.js",
     "clean": "rm -rf build",
     "clean:deps": "pnpm clean && rm -rf node_modules",
     "build": "pnpm clean && pnpm build:sol && tsc",
@@ -22,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-verify": "^2.0.3",
     "@openzeppelin/hardhat-upgrades": "^3.0.1",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.17.0",
