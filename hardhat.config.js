@@ -22,9 +22,14 @@ module.exports = {
   networks: {
     hardhat: {},
     mumbai: {
-      url: process.env.RPCURL, // Update with Mumbai Matic RPC URL
+      url: process.env.RPCURL_POLYGON_MUMBAI,
       accounts: [`0x${process.env.SIGNER}`],
     },
+    //Use for mainnet deployment
+    // polygon: {
+    //   url: process.env.RPCURL_POLYON_MAINNET,
+    //   accounts: [`0x${process.env.SIGNER}`],
+    // },
   },
   etherscan: {
     apiKey: {
