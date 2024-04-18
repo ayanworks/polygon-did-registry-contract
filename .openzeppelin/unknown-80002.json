@@ -2,15 +2,15 @@
   "manifestVersion": "3.2",
   "proxies": [
     {
-      "address": "0x59c5d68d6B45dd4bcaC643e8dc73c1f29FC0183d",
-      "txHash": "0x153de4adc51caceeabfc6d0a6a4b19159470d189421eefce990a512e785d70ee",
+      "address": "0xc087766218b885C6283072BA316a2Bc31B5c17db",
+      "txHash": "0x731adaa41dca5f67d91962c0d2ca905b4ddb325f0726fb0fb8677d43456f54b2",
       "kind": "transparent"
     }
   ],
   "impls": {
     "dadc513cd81ce3e765b05219a9f956799b5405d497cd25e1342ce5b4b08463df": {
-      "address": "0x5DF0b04279bbA8082253466b1373243C6c82bb1f",
-      "txHash": "0x4afb91141018066c147d75ab814c8d676450b077fb403276ab8643c385634e39",
+      "address": "0x7DcCBBaEcAED517AB8c283C70774676D4479c7C4",
+      "txHash": "0x95b06c40580baf441c23699fe4ebdefcb5916b4886e4e9846a0032fa8d6066d9",
       "layout": {
         "solcVersion": "0.8.16",
         "storage": [
