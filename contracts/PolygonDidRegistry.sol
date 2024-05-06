@@ -108,6 +108,7 @@ contract PolygonDidRegistry {
             string memory didDoc
         )
     {
+        require(_id != address(0), 'Invalid address provided');
         polyDIDs[_id].controller = msg.sender;
         polyDIDs[_id].created = block.timestamp;
         polyDIDs[_id].updated = block.timestamp;
@@ -204,6 +205,7 @@ contract PolygonDidRegistry {
         onlyController(_id)
         returns (address, string memory, string memory)
     {
+        require(_id != address(0), 'Invalid address provided');
         resourceData[_id][_resourceId] = _resourcePayload;
         keysById[_id].push(_resourceId);
         emit ResourceAdded(_id, _resourceId, _resourcePayload);
