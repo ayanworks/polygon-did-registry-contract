@@ -1,6 +1,6 @@
 {
   "name": "@ayanworks/polygon-did-registry-contract",
-  "version": "2.0.1-alpha.3",
+  "version": "2.0.1-alpha.4",
   "description": "Smart Contract to register DID on Polygon",
   "main": "build/index.js",
   "directories": {
