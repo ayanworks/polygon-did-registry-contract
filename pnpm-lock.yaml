@@ -48,8 +48,8 @@ importers:
         specifier: ^16.3.0
         version: 16.3.0(typescript@5.1.6)
       solc:
-        specifier: ^0.8.16
-        version: 0.8.21
+        specifier: 0.8.16
+        version: 0.8.16
       ts-node:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@18.17.0)(typescript@5.1.6)
@@ -2696,8 +2696,8 @@ packages:
     engines: {node: '>=8.0.0'}
     hasBin: true
 
-  solc@0.8.21:
-    resolution: {integrity: sha512-N55ogy2dkTRwiONbj4e6wMZqUNaLZkiRcjGyeafjLYzo/tf/IvhHY5P5wpe+H3Fubh9idu071i8eOGO31s1ylg==}
+  solc@0.8.16:
+    resolution: {integrity: sha512-6oZg7FAhIouj2zYLvoR3Q4fMP/+BGPR7sY7GcrEXKIp+DRd8RmpDEFO1LUBKpClUiaYguNgmthTFmnPl4MeiMQ==}
     engines: {node: '>=10.0.0'}
     hasBin: true
 
@@ -6490,7 +6490,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  solc@0.8.21:
+  solc@0.8.16:
     dependencies:
       command-exists: 1.2.9
       commander: 8.3.0
