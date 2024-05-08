@@ -10,6 +10,11 @@
       "address": "0xC1c392DC1073a86821B4ae37f1F0faCDcFFf45bF",
       "txHash": "0x82f79c38e7d6c943e76deb166a87515c32441708443abf1b410944fcb848a448",
       "kind": "transparent"
+    },
+    {
+      "address": "0x8e8E732a564735C18b84F6d51f1F58599EE48211",
+      "txHash": "0x8e1bd9439bff5a69fa632d9801702adf9da77df2cd1c4d9aedc29dc520f28430",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -284,6 +289,128 @@
             "numberOfBytes": "32"
           },
           "t_struct(PolyDID)15_storage": {
+            "label": "struct PolygonDidRegistry.PolyDID",
+            "members": [
+              {
+                "label": "controller",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "created",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "updated",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "didDoc",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "75b86adb6471aac29a596c2ab95b6cc3ffb19eb6c1bc7aafd10402d4762a892a": {
+      "address": "0xddBC6C77E7AA2E220C845b365b3CF76455157aaF",
+      "txHash": "0x82c4ad2dac45630071255f9171e2fb01767ff4ddc85b7b59bab26029b7552532",
+      "layout": {
+        "solcVersion": "0.8.16",
+        "storage": [
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "PolygonDidRegistry",
+            "src": "contracts/PolygonDidRegistry.sol:9"
+          },
+          {
+            "label": "polyDIDs",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_struct(PolyDID)13_storage)",
+            "contract": "PolygonDidRegistry",
+            "src": "contracts/PolygonDidRegistry.sol:17"
+          },
+          {
+            "label": "resourceData",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_address,t_mapping(t_string_memory_ptr,t_string_storage))",
+            "contract": "PolygonDidRegistry",
+            "src": "contracts/PolygonDidRegistry.sol:18"
+          },
+          {
+            "label": "keysById",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_array(t_string_storage)dyn_storage)",
+            "contract": "PolygonDidRegistry",
+            "src": "contracts/PolygonDidRegistry.sol:19"
+          },
+          {
+            "label": "initialized",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_bool",
+            "contract": "PolygonDidRegistry",
+            "src": "contracts/PolygonDidRegistry.sol:29"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_array(t_string_storage)dyn_storage)": {
+            "label": "mapping(address => string[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_string_memory_ptr,t_string_storage))": {
+            "label": "mapping(address => mapping(string => string))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_struct(PolyDID)13_storage)": {
+            "label": "mapping(address => struct PolygonDidRegistry.PolyDID)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_string_memory_ptr,t_string_storage)": {
+            "label": "mapping(string => string)",
+            "numberOfBytes": "32"
+          },
+          "t_string_memory_ptr": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(PolyDID)13_storage": {
             "label": "struct PolygonDidRegistry.PolyDID",
             "members": [
               {
