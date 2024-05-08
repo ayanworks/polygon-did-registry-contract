@@ -6,7 +6,6 @@ pragma solidity 0.8.16;
  *@dev Smart Contract for Polygon DID Method
  */
 contract PolygonDidRegistry {
-    uint256 totalDIDs;
     address owner;
     struct PolyDID {
         address controller;
@@ -16,8 +15,6 @@ contract PolygonDidRegistry {
     }
 
     mapping(address => PolyDID) polyDIDs;
-    mapping(uint256 => address) activeDIDs;
-    mapping(address => uint256) activeAddress;
     mapping(address => mapping(string => string)) resourceData;
     mapping(address => string[]) private keysById;
     event DIDCreated(address id, string doc);
@@ -46,7 +43,6 @@ contract PolygonDidRegistry {
     modifier nonReentrant() {
         require(!initialized, 'Contract instance has already been initialized');
         initialized = true;
-        totalDIDs = 0;
         _;
     }
 
@@ -109,13 +105,11 @@ contract PolygonDidRegistry {
         )
     {
         require(_id != address(0), 'Invalid address provided');
-        polyDIDs[_id].controller = msg.sender;
+        require(polyDIDs[_id].controller != _id, 'DID already exist');
+        polyDIDs[_id].controller = _id;
         polyDIDs[_id].created = block.timestamp;
         polyDIDs[_id].updated = block.timestamp;
         polyDIDs[_id].didDoc = _doc;
-        activeDIDs[totalDIDs] = msg.sender;
-        activeAddress[_id] = totalDIDs;
-        ++totalDIDs;
         emit DIDCreated(_id, _doc);
         return (
             polyDIDs[_id].controller,
@@ -139,26 +133,6 @@ contract PolygonDidRegistry {
             result[i] = resourceData[_id][keysById[_id][i]];
         }
         return (polyDIDs[_id].didDoc, result);
-    }
-
-    /**
-     *@dev Reads total number of DIDs and total number of active DIDs from Chain
-     */
-
-    function getTotalNumberOfDIDs() public view returns (uint256 _totalDIDs) {
-        return (totalDIDs);
-    }
-
-    /**
-     *@dev Reads one DID at a time from Chain based on index
-     *@param _index - Uint256 type variable that refers to the DID position
-     *@return _did - returns the DID Doc assciated with the index. Returns null if the DID Doc is deleted.
-     */
-
-    function getDIDDocByIndex(
-        uint256 _index
-    ) public view returns (string memory) {
-        return polyDIDs[activeDIDs[_index]].didDoc;
     }
 
     /**
