@@ -180,8 +180,10 @@ contract PolygonDidRegistry {
         returns (address, string memory, string memory)
     {
         require(_id != address(0), 'Invalid address provided');
+        if (bytes(resourceData[_id][_resourceId]).length == 0) {
+          keysById[_id].push(_resourceId);
+        }
         resourceData[_id][_resourceId] = _resourcePayload;
-        keysById[_id].push(_resourceId);
         emit ResourceAdded(_id, _resourceId, _resourcePayload);
         return (_id, _resourceId, _resourcePayload);
     }
