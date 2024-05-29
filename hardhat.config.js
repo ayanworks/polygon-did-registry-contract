@@ -23,12 +23,12 @@ module.exports = {
     hardhat: {},
     amoy: {
       url: process.env.AMOY_RPCURL,
-      accounts: [`0x${process.env.SIGNER}`],
+      accounts: [`0x${process.env.SIGNER_TESTNET}`],
     },
     //Use for mainnet deployment
     // polygon: {
-    //   url: process.env.RPCURL_POLYON_MAINNET,
-    //   accounts: [`0x${process.env.SIGNER}`],
+    //   url: process.env.MAINNET_RPCURL,
+    //   accounts: [`0x${process.env.SIGNER_MAINNET}`],
     // },
   },
   etherscan: {

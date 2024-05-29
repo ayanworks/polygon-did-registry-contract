@@ -6,7 +6,7 @@ const { describe, it } = require('node:test')
 const PolygonDIDRegistryJSON = require('../artifacts/contracts/PolygonDidRegistry.sol/PolygonDidRegistry.json')
 
 let PolygonUpgradableInstance, PolygonUpgradableInstance_test
-walletKey = process.env.SIGNER
+walletKey = process.env.SIGNER_TESTNET
 
 // Upgradable with Proxy
 // Deployment Testing 1.0
