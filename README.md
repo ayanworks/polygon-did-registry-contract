@@ -10,8 +10,8 @@ The Polygon registry contract acts as a public ledger, where the Polygon-Identit
 
 |     Network     | ChainId |              Registry Address              |
 | :-------------: | :-----: | :----------------------------------------: |
-| Polygon Mainnet |   137   | 0x98bF771e1E93Db917A89986bcdaBa3b43643F367 |
-| Polygon Testnet |  80001  | 0x8B335A167DA81CCef19C53eE629cf2F6291F2255 |
+| Polygon Mainnet |   137   | 0x0C16958c4246271622201101C83B9F0Fc7180d15 |
+| Polygon Testnet (amoy) |  80002  | 0xcB80F37eDD2bE3570c6C9D5B0888614E04E1e49E |
 
 ## Methods
 
