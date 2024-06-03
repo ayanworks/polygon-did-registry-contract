@@ -8,9 +8,9 @@ The Polygon registry contract acts as a public ledger, where the Polygon-Identit
 
 ## Contract Deployment
 
-|     Network     | ChainId |              Registry Address              |
-| :-------------: | :-----: | :----------------------------------------: |
-| Polygon Mainnet |   137   | 0x0C16958c4246271622201101C83B9F0Fc7180d15 |
+|        Network         | ChainId |              Registry Address              |
+| :--------------------: | :-----: | :----------------------------------------: |
+|    Polygon Mainnet     |   137   | 0x0C16958c4246271622201101C83B9F0Fc7180d15 |
 | Polygon Testnet (amoy) |  80002  | 0xcB80F37eDD2bE3570c6C9D5B0888614E04E1e49E |
 
 ## Methods
@@ -47,7 +47,6 @@ let wallet = new ethers.Wallet(`<Signer Key/Private Key>`, provider);
 let registry = new ethers.Contract(DID_ADDRESS, <Contract ABI>, wallet);
 ```
 
-
 ```
 
 # Deploying the Contract on Matic network
@@ -57,13 +56,17 @@ Pre-requisites
 - NodeJS
 
 ```
-https://nodejs.org/en/download/
+
+<https://nodejs.org/en/download/>
+
 ```
 
 - Hardhat
 
 ```
-https://hardhat.org/
+
+<https://hardhat.org/>
+
 ```
 
 
@@ -74,27 +77,35 @@ https://hardhat.org/
 Clone the above repository
 
 ```
-git clone https://gitlab.com/polygon-did/polygon-did-smart-contract.git
+
+git clone <https://gitlab.com/polygon-did/polygon-did-smart-contract.git>
+
 ```
 
 Install Dependencies
 
 ```
+
 pnpm i
+
 ```
 
 
 Update your and RPC URL in .env file.
 
 ```
+
 RPCURL="<Place your RPC URL here>"
 SIGNER="<Place your private Key here>"
+
 ```
 
 On a new console window run
 
 ```
+
 nxp hardhat run deploy --network <network name>
+
 ```
 
 ## Testing
@@ -102,5 +113,9 @@ nxp hardhat run deploy --network <network name>
 For Testing use the command
 
 ```
+
 pnpm test
+
+```
+
 ```
