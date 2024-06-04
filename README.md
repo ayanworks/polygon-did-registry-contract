@@ -51,7 +51,7 @@ let registry = new ethers.Contract(DID_ADDRESS, <Contract ABI>, wallet);
 
 Pre-requisites
 
-- NodeJS - https://github.com/ayanworks/polygon-did-registry-contract.git
+- NodeJS - https://nodejs.org/en/download/
 - Hardhat - https://hardhat.org
 - A wallet connected to polygon network, with Matic token in it. One can receive the Matic Test Tokens from their faucet.
 
