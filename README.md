@@ -1,3 +1,12 @@
+# ⚠️ ARCHIVED REPOSITORY
+
+This repository is being archived. For the latest features, security updates, and active development, please see the up-to-date version here:
+
+👉 **[https://github.com/ayanworks/polygon-did-modules](https://github.com/ayanworks/polygon-did-modules)**
+
+---
+
+
 # Polygon DID Registry Contract
 
 This library is an implementation of a registry contract that supports the Polygon DID Method.
